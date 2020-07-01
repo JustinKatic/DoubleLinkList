@@ -5,17 +5,26 @@ DLinkedListFunctions dLink;
 
 int main()
 {
-	//head and tail node == nullptr
-	dLink.Init();
 
-	int choice;	
+	DLinkedListFunctions list;
+	list.PushBack(10);
+	list.PushFront(8);
+	list.PushBack(9);
+	list.BubbleSort();
+	list.DeleteFirst();
+	list.PrintList();
+	list.InsertAfter(0, 34);
+	list.PrintList();
+
+	system("pause");
+
+	int choice;
 
 	//while true
 	while (1)
 	{
 		//getting user choice and error checking an int is entered
 		system("cls");
-		std::cout << "hello";
 		std::cout << "1.PushFront\n2.PushBack\n3.InsertAfter\n4.DeleteFirst\n5.DeleteLast\n6.PrintList\n7.Exit\n8.printHeadNode\n9.printTailNode\n10.returnNumberOfNodes\n11.DeleteAtUserInput\n12.BubbleSort\n13.IsListEmpty\n";
 		dLink.PrintList();
 		std::cin >> choice;
@@ -23,7 +32,7 @@ int main()
 		{
 			dLink.ErrorCheck();
 			continue;
-		}	
+		}
 
 		//push front
 		else if (choice == 1)
@@ -103,14 +112,14 @@ int main()
 		//print headNode
 		else if (choice == 8)
 		{
-			dLink.ReturnHead();
+			std::cout << dLink.ReturnHead()->data << std::endl;
 			system("pause");
 		}
 
 		//print tailNode
 		else if (choice == 9)
 		{
-			dLink.ReturnTail();
+			std::cout << dLink.ReturnTail()->data << std::endl;
 			system("pause");
 		}
 
@@ -125,7 +134,7 @@ int main()
 		else if (choice == 11)
 		{
 			int position;
-			std::cout << "Enter the data in prev location to where youd like new data after: ";
+			std::cout << "Enter the index location to where youd like remove data from: ";
 			std::cin >> position;
 			if (std::cin.fail())
 			{
@@ -138,7 +147,7 @@ int main()
 		//bubble sort
 		else if (choice == 12)
 		{
-			dLink.BubbleSort();			
+			dLink.BubbleSort();
 		}
 
 		//is list empty
@@ -153,7 +162,7 @@ int main()
 		{
 			std::cout << "incorrect input enter one of the displayed options" << std::endl;
 			system("cls");
-		}		
+		}
 	}
 	return 0;
 }

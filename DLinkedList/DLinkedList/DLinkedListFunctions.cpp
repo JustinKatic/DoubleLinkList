@@ -1,12 +1,18 @@
 #include "DLinkedListFunctions.h"
 
-//used at start to create fresh list
-void DLinkedListFunctions::Init()
+DLinkedListFunctions::DLinkedListFunctions()
 {
-	//sets headNode and tailNode == null fresh list
 	headNode = nullptr;
 	tailNode = nullptr;
 }
+
+DLinkedListFunctions::~DLinkedListFunctions()
+{
+	while (IsEmpty() == false)
+		DeleteFirst();
+}
+
+
 
 //puts new value at front of list and changes pointers
 void DLinkedListFunctions::PushFront(int newData)
@@ -69,7 +75,7 @@ void DLinkedListFunctions::InsertAfter(int position, int newData)
 	//if no headNode exists there is nothing in list
 	if (headNode == nullptr)
 	{
-		std::cout << "could not insert" << std::endl;
+		//coulnt insert
 		return;
 	}
 
@@ -101,8 +107,6 @@ void DLinkedListFunctions::InsertAfter(int position, int newData)
 		//if couldnt find data send error msg
 		if (tempNode == nullptr)
 		{
-			std::cout << "Could not insert" << std::endl;
-			std::cout << "data not found" << std::endl;
 			return;
 		}
 	}
@@ -145,7 +149,6 @@ void DLinkedListFunctions::DeleteNode(int position)
 	//if no headNode exists there is nothing in list
 	if (headNode == nullptr)
 	{
-		std::cout << "could not delete list is empty" << std::endl;
 		return;
 	}
 	//loops through till temp node == position
@@ -255,28 +258,14 @@ void DLinkedListFunctions::DeleteLast()
 	}
 }
 //prints the data at head node
-void DLinkedListFunctions::ReturnHead()
+DLinkedListFunctions::Node* DLinkedListFunctions::ReturnHead()
 {
-	if (headNode != nullptr)
-	{
-		std::cout << "headNode data: " << headNode->data << std::endl;
-	}
-	else
-	{
-		std::cout << "list is empty" << std::endl;
-	}
+	return headNode;
 }
 //prints data at tail node
-void DLinkedListFunctions::ReturnTail()
+DLinkedListFunctions::Node* DLinkedListFunctions::ReturnTail()
 {
-	if (tailNode != nullptr)
-	{
-		std::cout << "tailNode data: " << tailNode->data << std::endl;
-	}
-	else
-	{
-		std::cout << "list is empty" << std::endl;
-	}
+	return tailNode;
 }
 
 //prints number of nodes
@@ -285,7 +274,7 @@ void DLinkedListFunctions::ReturnNumOfNodes()
 	std::cout << NumberOfNodes << std::endl;
 }
 
-//sorting list 
+//sorting list  
 void DLinkedListFunctions::BubbleSort()
 {
 	Node* currentNode;
@@ -340,7 +329,6 @@ void DLinkedListFunctions::SwapNodes(Node* a, Node* b)
 	if (b->nextNode == nullptr)
 	{
 		tailNode = a;
-		std::cout << tailNode->data;
 		a->prevNode->nextNode = b;
 		b->prevNode = a->prevNode;
 		a->prevNode = b;
@@ -369,7 +357,6 @@ void DLinkedListFunctions::SwapNodes(Node* a, Node* b)
 		a->nextNode = b->nextNode;
 		b->nextNode = a;
 	}
-
 }
 
 void DLinkedListFunctions::ErrorCheck()

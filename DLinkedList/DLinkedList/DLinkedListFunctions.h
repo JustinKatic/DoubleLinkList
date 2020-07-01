@@ -3,6 +3,9 @@
 class DLinkedListFunctions
 {
 public:
+	DLinkedListFunctions();
+	~DLinkedListFunctions();
+
 	struct Node
 	{
 		//data inside node
@@ -15,14 +18,13 @@ public:
 	Node* headNode;
 	Node* tailNode;
 	int NumberOfNodes = 0;
-	
-	void Init();
+
 
 	void PushFront(int newData);
 
 	void PushBack(int newData);
 
-	void InsertAfter(int prevData, int newData);
+	void InsertAfter(int position, int newData);
 
 	void DeleteNode(int position);
 
@@ -32,9 +34,9 @@ public:
 
 	void DeleteLast();
 
-	void ReturnHead();
+	Node* ReturnHead();
 
-	void ReturnTail();
+	Node* ReturnTail();
 
 	void ReturnNumOfNodes();
 
@@ -45,6 +47,5 @@ public:
 	void SwapNodes(Node* a, Node* b);
 
 	void ErrorCheck();
-
 };
 
